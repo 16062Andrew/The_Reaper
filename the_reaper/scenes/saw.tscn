@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ixic7upfluq"]
+
+[ext_resource type="Script" path="res://scripts/saw.gd" id="1_c080a"]
+[ext_resource type="Texture2D" uid="uid://cm71bjt17v4ot" path="res://Assets/Sawblade.png" id="1_r7nvk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_edldf"]
+radius = 25.0799
+
+[node name="saw" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_c080a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_edldf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r7nvk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

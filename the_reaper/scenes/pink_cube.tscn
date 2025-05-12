@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg7kmsyn6pdi5"]
+
+[ext_resource type="Script" path="res://scripts/pink_cube.gd" id="1_xleva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdlbo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_63l7o"]
+
+[node name="blue_cube" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_xleva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_bdlbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.973516, 0.584943, 1, 1)
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_63l7o")

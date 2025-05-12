@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3ok4xpg3ogt4"]
+
+[ext_resource type="Script" path="res://scripts/blue_cube.gd" id="1_s57m5"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_63l7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw44v"]
+
+[node name="blue_cube" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_s57m5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(10, 10)
+texture = SubResource("PlaceholderTexture2D_63l7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 0.316067, 0.96122, 1)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_iw44v")

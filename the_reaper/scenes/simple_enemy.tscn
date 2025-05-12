@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxmp6r67g1pgb"]
+
+[ext_resource type="Script" path="res://scripts/simple_enemy.gd" id="1_pvqeg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i0nt"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ofma2"]
+
+[node name="simple enemy" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_pvqeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_3i0nt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 10)
+texture = SubResource("PlaceholderTexture2D_ofma2")
+
+[node name="Body" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(0, -1.66667)
+scale = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_3i0nt")
+
+[connection signal="body_entered" from="Body" to="." method="_on_body_body_entered"]

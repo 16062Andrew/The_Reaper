@@ -1,0 +1,186 @@
+[gd_scene load_steps=21 format=3 uid="uid://dnq5h52tfuylu"]
+
+[ext_resource type="Texture2D" uid="uid://cnu3io0owgm5f" path="res://Assets/ppooper-removebg-preview.png" id="1_pcnd8"]
+[ext_resource type="PackedScene" uid="uid://d0txhix228674" path="res://scenes/player.tscn" id="2_1vrg5"]
+[ext_resource type="PackedScene" uid="uid://usc76gdfaqqv" path="res://scenes/player2.tscn" id="3_u8gnu"]
+[ext_resource type="PackedScene" uid="uid://bi8vie50eidho" path="res://scenes/platform.tscn" id="4_pkhwg"]
+[ext_resource type="Texture2D" uid="uid://cic8rul1imww5" path="res://Assets/background 3.png" id="5_a4rs8"]
+[ext_resource type="PackedScene" uid="uid://2ixic7upfluq" path="res://scenes/saw.tscn" id="6_mg0xm"]
+[ext_resource type="PackedScene" uid="uid://dqjg1w31s74bw" path="res://scenes/tree.tscn" id="8_q05xg"]
+[ext_resource type="PackedScene" uid="uid://bbe4oriu80q0g" path="res://scenes/portal.tscn" id="8_vw0i8"]
+[ext_resource type="Script" path="res://scenes/left_teleport.gd" id="9_bqjxw"]
+[ext_resource type="Script" path="res://scenes/portal_right_teleport.gd" id="9_fvan7"]
+[ext_resource type="PackedScene" uid="uid://brgi74rw8wibb" path="res://tag.tscn" id="9_wcnjo"]
+[ext_resource type="Script" path="res://scenes/button.gd" id="10_d7wbk"]
+[ext_resource type="Script" path="res://scenes/floor_teleport.gd" id="11_in7oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we8yg"]
+size = Vector2(322.5, 106.438)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyhao"]
+atlas = ExtResource("1_pcnd8")
+region = Rect2(0.504, 8.53619, 981.824, 108.096)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xc4d"]
+atlas = ExtResource("5_a4rs8")
+region = Rect2(0, 0, 581.108, 330.085)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1yen"]
+size = Vector2(48, 689)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucwsc"]
+radius = 84.0952
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4tap"]
+radius = 65.9697
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlxtf"]
+size = Vector2(1162, 49.5)
+
+[node name="Level 1" type="Node2D"]
+
+[node name="floor" type="StaticBody2D" parent="."]
+z_index = 3
+position = Vector2(550, 652)
+
+[node name="left floor2" type="CollisionShape2D" parent="floor"]
+position = Vector2(-415, 88)
+shape = SubResource("RectangleShape2D_we8yg")
+
+[node name="left floor" type="Sprite2D" parent="floor"]
+modulate = Color(1, 0.427451, 0, 1)
+texture_repeat = 2
+position = Vector2(-395, 89)
+scale = Vector2(0.328237, 1.12069)
+texture = SubResource("AtlasTexture_tyhao")
+
+[node name="middle floor2" type="Sprite2D" parent="floor"]
+modulate = Color(1, 0.427451, 0, 1)
+texture_repeat = 2
+position = Vector2(34, 89)
+scale = Vector2(0.328237, 1.12069)
+texture = SubResource("AtlasTexture_tyhao")
+
+[node name="right floor2" type="Sprite2D" parent="floor"]
+modulate = Color(1, 0.427451, 0, 1)
+texture_repeat = 2
+position = Vector2(445, 89)
+scale = Vector2(0.328237, 1.12069)
+texture = SubResource("AtlasTexture_tyhao")
+
+[node name="middle floor" type="CollisionShape2D" parent="floor"]
+position = Vector2(33.75, 87.2188)
+shape = SubResource("RectangleShape2D_we8yg")
+
+[node name="right floor" type="CollisionShape2D" parent="floor"]
+position = Vector2(445, 90.5625)
+shape = SubResource("RectangleShape2D_we8yg")
+
+[node name="ColorRect" type="ColorRect" parent="floor"]
+z_index = -1
+offset_left = -557.0
+offset_top = 49.0
+offset_right = 612.0
+offset_bottom = 141.0
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_1vrg5")]
+position = Vector2(368, 432)
+
+[node name="Player2" parent="." instance=ExtResource("3_u8gnu")]
+z_index = 5
+position = Vector2(764, 439)
+
+[node name="Background" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_repeat = 2
+position = Vector2(561, 386.777)
+scale = Vector2(2.04991, 1.98317)
+texture = SubResource("AtlasTexture_6xc4d")
+
+[node name="saw" parent="." instance=ExtResource("6_mg0xm")]
+position = Vector2(1379, 666)
+
+[node name="right platform" parent="." instance=ExtResource("4_pkhwg")]
+position = Vector2(767, 474)
+scale = Vector2(125, 15)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 457)
+offset = Vector2(0, -70)
+
+[node name="tree left" parent="." instance=ExtResource("8_q05xg")]
+position = Vector2(163, 563)
+scale = Vector2(0.15, 0.15)
+
+[node name="tree right" parent="." instance=ExtResource("8_q05xg")]
+position = Vector2(975, 559)
+scale = Vector2(-0.15, 0.15)
+
+[node name="bush" parent="." instance=ExtResource("8_q05xg")]
+position = Vector2(592, 652)
+scale = Vector2(0.15, 0.15)
+
+[node name="wall left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall left"]
+position = Vector2(-21, 334.5)
+shape = SubResource("RectangleShape2D_y1yen")
+
+[node name="wall right" type="StaticBody2D" parent="."]
+position = Vector2(1198, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall right"]
+position = Vector2(-21, 334.5)
+shape = SubResource("RectangleShape2D_y1yen")
+
+[node name="left platform" parent="." instance=ExtResource("4_pkhwg")]
+position = Vector2(373, 468)
+scale = Vector2(125, 15)
+
+[node name="portal" parent="." instance=ExtResource("8_vw0i8")]
+position = Vector2(959, 200)
+scale = Vector2(0.25, 0.25)
+
+[node name="Area2D" type="Area2D" parent="portal"]
+script = ExtResource("9_fvan7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal/Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_ucwsc")
+
+[node name="portal2" parent="." instance=ExtResource("8_vw0i8")]
+position = Vector2(167, 200)
+scale = Vector2(0.25, 0.25)
+
+[node name="Area2D" type="Area2D" parent="portal2"]
+script = ExtResource("9_bqjxw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal2/Area2D"]
+shape = SubResource("CircleShape2D_y4tap")
+
+[node name="middle platform" parent="." instance=ExtResource("4_pkhwg")]
+position = Vector2(565, 326)
+
+[node name="Tag" parent="." instance=ExtResource("9_wcnjo")]
+position = Vector2(764, 443)
+
+[node name="Button" type="Button" parent="."]
+offset_top = 62.0
+offset_right = 111.0
+offset_bottom = 136.0
+text = "Exit"
+script = ExtResource("10_d7wbk")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(586, 956)
+script = ExtResource("11_in7oi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7, -128)
+shape = SubResource("RectangleShape2D_hlxtf")
+
+[connection signal="body_entered" from="portal/Area2D" to="portal/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="portal2/Area2D" to="portal2/Area2D" method="_on_body_entered"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

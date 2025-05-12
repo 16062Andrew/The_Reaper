@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbe4oriu80q0g"]
+
+[ext_resource type="Script" path="res://scripts/portal.gd" id="1_1mdp2"]
+[ext_resource type="Texture2D" uid="uid://ctxtdt1ghnxod" path="res://Assets/New Piskel.png" id="2_gcaal"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvxi0"]
+radius = 236.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l7a8"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7gpb"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnrkv"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjkic"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bjv6"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f48bo"]
+atlas = ExtResource("2_gcaal")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp0qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l7a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7gpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnrkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjkic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bjv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f48bo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="portal" type="Area2D"]
+script = ExtResource("1_1mdp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vvxi0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -0.500014)
+scale = Vector2(14.6563, 13.7188)
+sprite_frames = SubResource("SpriteFrames_jp0qj")
+autoplay = "default"
+frame_progress = 0.205777
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

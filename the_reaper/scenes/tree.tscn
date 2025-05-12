@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqjg1w31s74bw"]
+
+[ext_resource type="Texture2D" uid="uid://d3m1cvg8rhwdu" path="res://Assets/tree.webp" id="1_1irdw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8eeq"]
+size = Vector2(1356, 75)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+modulate = Color(1, 0.427451, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1irdw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-23, -236.5)
+shape = SubResource("RectangleShape2D_n8eeq")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D2"]
+offset_left = -689.0
+offset_top = -42.0
+offset_right = 659.0
+offset_bottom = 42.0
+color = Color(7.79718e-06, 0.805357, 0.432312, 1)

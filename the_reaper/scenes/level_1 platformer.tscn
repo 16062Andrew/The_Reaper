@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8t5xm3ppvnv"]
+
+[ext_resource type="Texture2D" uid="uid://dj8xu53h4eftp" path="res://Assets/Backgrounds/Fall Backgrounds/PNG/background 3/background 3.png" id="1_hegec"]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="Background3" type="Sprite2D" parent="."]
+position = Vector2(289, 165)
+texture = ExtResource("1_hegec")
